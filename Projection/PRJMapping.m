@@ -10,6 +10,8 @@
 
 #import "PRJRect.h"
 
+#import <UIKit/UIKit.h>
+
 @implementation PRJMapping {
   NSMapTable *_rectMapping;
 }

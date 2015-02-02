@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class PRJRect;
+@class UIView;
 
 @interface PRJMapping : NSObject
 

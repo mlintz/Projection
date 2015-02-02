@@ -31,37 +31,37 @@
   view.backgroundColor = [UIColor whiteColor];
   self.view = view;
   
-  UIView *childView0 = [[UIView alloc] init];
-  childView0.backgroundColor = [UIColor cyanColor];
-  [view addSubview:childView0];
+  UIView *cyanView = [[UIView alloc] init];
+  cyanView.backgroundColor = [UIColor cyanColor];
+  [view addSubview:cyanView];
   
-  UIView *childView1 = [[UIView alloc] init];
-  childView1.backgroundColor = [UIColor magentaColor];
-  [view addSubview:childView1];
+  UIView *magentaView = [[UIView alloc] init];
+  magentaView.backgroundColor = [UIColor magentaColor];
+  [view addSubview:magentaView];
   
-  UIView *childView2 = [[UIView alloc] init];
-  childView2.transform = CGAffineTransformMakeRotation(M_PI_4);
-  childView2.backgroundColor = [UIColor brownColor];
-  [view addSubview:childView2];
+  UIView *brownView = [[UIView alloc] init];
+  brownView.transform = CGAffineTransformMakeRotation(M_PI_4);
+  brownView.backgroundColor = [UIColor brownColor];
+  [view addSubview:brownView];
 }
 
 - (void)viewWillLayoutSubviews {
   [super viewWillLayoutSubviews];
   
   [self.view prj_applyProjection:^(PRJMapping *mapping) {
-    UIView *childView0 = [self.view.subviews firstObject];
-    mapping[childView0].height = 100;
-    mapping[childView0].width = 100;
-    mapping[childView0].center = mapping.bounds.center;
+    UIView *cyanView = [self.view.subviews firstObject];
+    mapping[cyanView].height = 100;
+    mapping[cyanView].width = 100;
+    mapping[cyanView].center = mapping.bounds.center;
     
-    UIView *childView1 = self.view.subviews[1];
-    mapping[childView1].bottomLeft = mapping[childView0].topRight;
-    mapping[childView1].size = mapping[childView0].size;
+    UIView *magentaView = self.view.subviews[1];
+    mapping[magentaView].bottomLeft = mapping[cyanView].topRight;
+    mapping[magentaView].size = mapping[cyanView].size;
     
-    UIView *childView2 = self.view.subviews[2];
-    mapping[childView2].center = mapping[childView1].center;
-    mapping[childView2].height = mapping[childView1].height - 40;
-    mapping[childView2].width = mapping[childView2].height;
+    UIView *brownView = self.view.subviews[2];
+    mapping[brownView].center = mapping[magentaView].center;
+    mapping[brownView].height = mapping[magentaView].height - 40;
+    mapping[brownView].width = mapping[brownView].height;
   }];
 }
 
