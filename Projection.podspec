@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/mlintz/Projection"
   # TODO: add tag
   s.source       = { :git => "https://github.com/mlintz/Projection.git",
-                     :tag => "v#{spec.version}" }
+                     :tag => "v#{s.version}" }
   s.summary      = "iOS library for laying out views using smart rectangles."
   # TODO: add description
   s.description  = <<-DESC
