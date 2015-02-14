@@ -1,13 +1,3 @@
-// TODO(mlintz):
-//   - benchmark performance
-//   - cache min and length values
-//   - write tests lol
-//   - document when rounding happens (never! mapping does rounding)
-//   - add usage comments (in PRJProjection.h)?
-//   - document quirks in PRJMapping subscription (retains (not copy) key,
-//            creates new key if one doesn't exist on a get)
-//            copies on assign
-
 //
 //  PRJRect.m
 //  Projection
@@ -307,6 +297,17 @@ typedef NS_OPTIONS(NSUInteger, PRJMetricType) {
   return CGRectMake(origin.x, origin.y, size.width, size.height);
 }
 
+- (CGRect)integralFrame {
+    return CGRectIntegral(self.frame);
+}
+
+- (BOOL)isFullyDefined {
+  return _horizontalMetric0.metricType != kPRJMetricTypeNull
+      && _horizontalMetric1.metricType != kPRJMetricTypeNull
+      && _verticalMetric0.metricType != kPRJMetricTypeNull
+      && _verticalMetric1.metricType != kPRJMetricTypeNull;
+}
+
 #pragma mark NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
@@ -322,6 +323,7 @@ typedef NS_OPTIONS(NSUInteger, PRJMetricType) {
 
 #pragma mark Private
 
+// TODO: cache min and length values
 - (void)calculateMin:(CGFloat *)outMin
            andLength:(CGFloat *)outLength
         forDirection:(PRJMetricDirection)direction {

@@ -25,9 +25,10 @@
 - (void)prj_applyProjectionWithBounds:(CGRect)bounds configuration:(PRJConfigurationBlock)configurationBlock {
   NSAssert(configurationBlock, @"configurationBlock must be non-nil");
   PRJMapping *mapping = [[PRJMapping alloc] init];
-  mapping.bounds.frame = bounds;
+  PRJRect *viewBoundsRect = [[PRJRect alloc] init];
+  viewBoundsRect.frame = bounds;
   
-  configurationBlock(mapping);
+  configurationBlock(mapping, viewBoundsRect);
   [mapping apply];
 }
 
