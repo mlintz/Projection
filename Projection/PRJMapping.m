@@ -10,8 +10,6 @@
 
 #import "PRJRect.h"
 
-#import <UIKit/UIKit.h>
-
 @implementation PRJMapping {
   NSMapTable *_rectMapping;
 }
@@ -20,14 +18,13 @@
   self = [super init];
   if (self) {
     _rectMapping = [NSMapTable strongToStrongObjectsMapTable];
-    _bounds = [[PRJRect alloc] init];
   }
   return self;
 }
 
 - (NSString *)description {
-  return [NSString stringWithFormat:@"<%@ %p; bounds = %@; contents = %@>", NSStringFromClass([self class]),
-          self, self.bounds, _rectMapping];
+  return [NSString stringWithFormat:@"<%@ %p; contents = %@>", NSStringFromClass([self class]),
+          self, _rectMapping];
 }
 
 - (void)setObject:(PRJRect *)rect forKeyedSubscript:(UIView *)key {
@@ -47,10 +44,11 @@
 - (void)apply {
   for (UIView *view in _rectMapping) {
     PRJRect *rect = [_rectMapping objectForKey:view];
-    CGRect integralFrame = CGRectIntegral(rect.frame);
+    NSAssert(rect.isFullyDefined, @"Attempting to apply underdefined rect: %@", rect);
+    CGRect frame = rect.integralFrame;
 
-    view.center = CGPointMake(CGRectGetMidX(integralFrame), CGRectGetMidY(integralFrame));
-    view.bounds = CGRectMake(0, 0, CGRectGetWidth(integralFrame), CGRectGetHeight(integralFrame));
+    view.center = CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame));
+    view.bounds = CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame));
   }
 }
 
