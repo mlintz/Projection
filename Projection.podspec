@@ -9,11 +9,14 @@ Pod::Spec.new do |s|
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.homepage     = "https://github.com/mlintz/Projection"
   # TODO: add tag
-  s.source       = { :git => "https://github.com/mlintz/Projection.git", :commit => "1079fb0bdf14c8053e35330bf411d546c2c59234" }
+  s.source       = { :git => "https://github.com/mlintz/Projection.git",
+                     :tag => "v#{spec.version}" }
   s.summary      = "iOS library for laying out views using smart rectangles."
   # TODO: add description
   s.description  = <<-DESC
-                   iOS library for laying out views using smart rectangles.
+                   An iOS layout library as an alternative to Autolayout.
+
+                   Frames are defined incrementally using smart rectangles which can infer new values based on what's been previously set.
                    DESC
 
   s.platform     = :ios, "6.0"
