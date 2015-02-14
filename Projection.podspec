@@ -25,4 +25,6 @@ Pod::Spec.new do |s|
   s.source_files  = "Projection/**/*.{h,m}"
   s.public_header_files = "Projection/*.h"  
 
+  s.requires_arc = true
+
 end
