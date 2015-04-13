@@ -48,7 +48,10 @@
     CGRect frame = rect.integralFrame;
 
     view.center = CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame));
-    view.bounds = CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame));
+    view.bounds = CGRectMake(CGRectGetMinX(view.bounds),
+                             CGRectGetMinY(view.bounds),
+                             CGRectGetWidth(frame),
+                             CGRectGetHeight(frame));
   }
 }
 
