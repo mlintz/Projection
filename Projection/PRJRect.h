@@ -54,6 +54,7 @@ set) or if it doesn't have enough definition to define a value.
 */
 
 @interface PRJRect : NSObject<NSCopying>
+NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, assign) CGFloat left;
 @property(nonatomic, assign) CGFloat right;
@@ -79,4 +80,5 @@ set) or if it doesn't have enough definition to define a value.
 /// YES if exactly two horizontal and two vertical values are set.
 @property(nonatomic, readonly) BOOL isFullyDefined;
 
+NS_ASSUME_NONNULL_END
 @end
