@@ -9,7 +9,7 @@
 @class PRJMapping;
 @class PRJRect;
 
-typedef void (^PRJConfigurationBlock)(PRJMapping *mapping, PRJRect *viewBounds);
+typedef void (^PRJConfigurationBlock)(PRJMapping * __nonnull mapping, PRJRect * __nonnull viewBounds);
 
 /** Convenience category for applying layout to a view's children.
 
@@ -45,6 +45,7 @@ The following two examples are equivalent:
 */
 
 @interface UIView (PRJConvenience)
+NS_ASSUME_NONNULL_BEGIN
 
 - (void)prj_applyProjection:(PRJConfigurationBlock)configurationBlock;
 - (void)prj_applyProjectionWithSize:(CGSize)size
@@ -52,4 +53,5 @@ The following two examples are equivalent:
 - (void)prj_applyProjectionWithBounds:(CGRect)bounds
                         configuration:(PRJConfigurationBlock)configurationBlock;
 
+NS_ASSUME_NONNULL_END
 @end
