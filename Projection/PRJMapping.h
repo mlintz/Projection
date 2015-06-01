@@ -37,6 +37,7 @@ Usage:
 */
 
 @interface PRJMapping : NSObject
+NS_ASSUME_NONNULL_BEGIN
 
 /** Returns the PRJRect associated with the given UIView.
 @param key The UIView for which to return the associatedPRJRect.
@@ -60,4 +61,5 @@ instead.
 /// Iterates through all view/rect entries and sets the rect's integralFrame as the view's frame.
 - (void)apply;
 
+NS_ASSUME_NONNULL_END
 @end
