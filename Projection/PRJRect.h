@@ -6,6 +6,9 @@
 //  Copyright (c) 2015 Mikey Lintz. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
 /** A helper class for incrementally defining the frame for a view.
 
 PRJRect will attempt to infer the value of left, right, etc based on what's previously been set.
