@@ -11,7 +11,10 @@
 #import "PRJProjection.h"
 
 @interface ViewController ()
-
+@property(nonatomic, strong) UIView *cyanView;
+@property(nonatomic, strong) UIView *magentaView;
+@property(nonatomic, strong) UIView *brownView;
+@property(nonatomic, strong) CALayer *yellowLayer;
 @end
 
 @implementation ViewController
@@ -31,37 +34,42 @@
   view.backgroundColor = [UIColor whiteColor];
   self.view = view;
   
-  UIView *cyanView = [[UIView alloc] init];
-  cyanView.backgroundColor = [UIColor cyanColor];
-  [view addSubview:cyanView];
+  self.cyanView = [[UIView alloc] init];
+  self.cyanView.backgroundColor = [UIColor cyanColor];
+  [self.view addSubview:self.cyanView];
   
-  UIView *magentaView = [[UIView alloc] init];
-  magentaView.backgroundColor = [UIColor magentaColor];
-  [view addSubview:magentaView];
+  self.magentaView = [[UIView alloc] init];
+  self.magentaView.backgroundColor = [UIColor magentaColor];
+  [self.view addSubview:self.magentaView];
   
-  UIView *brownView = [[UIView alloc] init];
-  brownView.transform = CGAffineTransformMakeRotation(M_PI_4);
-  brownView.backgroundColor = [UIColor brownColor];
-  [view addSubview:brownView];
+  self.brownView = [[UIView alloc] init];
+  self.brownView.transform = CGAffineTransformMakeRotation(M_PI_4);
+  self.brownView.backgroundColor = [UIColor brownColor];
+  [self.view addSubview:self.brownView];
+
+  self.yellowLayer = [[CALayer alloc] init];
+  self.yellowLayer.backgroundColor = [[UIColor yellowColor] CGColor];
+  self.yellowLayer.anchorPoint = CGPointMake(0.25f, 0.25f);
+  [self.view.layer addSublayer:self.yellowLayer];
 }
 
 - (void)viewWillLayoutSubviews {
   [super viewWillLayoutSubviews];
-  
-  [self.view prj_applyProjection:^(PRJMapping *mapping) {
-    UIView *cyanView = [self.view.subviews firstObject];
-    mapping[cyanView].height = 100;
-    mapping[cyanView].width = 100;
-    mapping[cyanView].center = mapping.bounds.center;
+
+  [self.view prj_applyProjection:^(PRJMapping *mapping, PRJRect *viewBounds) {
+    mapping[self.cyanView].height = 100;
+    mapping[self.cyanView].width = 100;
+    mapping[self.cyanView].center = viewBounds.center;
     
-    UIView *magentaView = self.view.subviews[1];
-    mapping[magentaView].bottomLeft = mapping[cyanView].topRight;
-    mapping[magentaView].size = mapping[cyanView].size;
+    mapping[self.magentaView].bottomLeft = mapping[self.cyanView].topRight;
+    mapping[self.magentaView].size = mapping[self.cyanView].size;
     
-    UIView *brownView = self.view.subviews[2];
-    mapping[brownView].center = mapping[magentaView].center;
-    mapping[brownView].height = mapping[magentaView].height - 40;
-    mapping[brownView].width = mapping[brownView].height;
+    mapping[self.brownView].center = mapping[self.magentaView].center;
+    mapping[self.brownView].height = mapping[self.magentaView].height - 40;
+    mapping[self.brownView].width = mapping[self.brownView].height;
+
+    mapping[self.yellowLayer].center = mapping[self.brownView].center;
+    mapping[self.yellowLayer].size = mapping[self.brownView].size;
   }];
 }
 
