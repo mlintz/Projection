@@ -6,6 +6,9 @@
 //  Copyright (c) 2015 Mikey Lintz. All rights reserved.
 //
 
-#import "PRJMapping.h"
-#import "PRJRect.h"
-#import "UIView+PRJConvenience.h"
+#ifndef _PROJECTION_
+    #define _PROJECTION_
+    #import "PRJMapping.h"
+    #import "PRJRect.h"
+    #import "UIView+PRJConvenience.h"
+#endif /* _PROJECTION_ */
