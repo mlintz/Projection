@@ -11,4 +11,5 @@
     #import "PRJMapping.h"
     #import "PRJRect.h"
     #import "UIView+PRJConvenience.h"
+    #import "PRJCategories.h"
 #endif /* _PROJECTION_ */

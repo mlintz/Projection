@@ -27,12 +27,12 @@
           self, _rectMapping];
 }
 
-- (void)setObject:(PRJRect *)rect forKeyedSubscript:(UIView *)key {
+- (void)setObject:(PRJRect *)rect forKeyedSubscript:(id<PRJProjectable>)key {
   NSAssert(key && rect, @"key and rect must be non-nil.");
   [_rectMapping setObject:[rect copy] forKey:key];
 }
 
-- (PRJRect *)objectForKeyedSubscript:(UIView *)key {
+- (PRJRect *)objectForKeyedSubscript:(id<PRJProjectable>)key {
   PRJRect *rect = [_rectMapping objectForKey:key];
   if (!rect) {
     rect = [[PRJRect alloc] init];
@@ -42,16 +42,10 @@
 }
 
 - (void)apply {
-  for (UIView *view in _rectMapping) {
-    PRJRect *rect = [_rectMapping objectForKey:view];
+  for (id<PRJProjectable> projectable in _rectMapping) {
+    PRJRect *rect = [_rectMapping objectForKey:projectable];
     NSAssert(rect.isFullyDefined, @"Attempting to apply underdefined rect: %@", rect);
-    CGRect frame = rect.integralFrame;
-
-    view.center = CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame));
-    view.bounds = CGRectMake(CGRectGetMinX(view.bounds),
-                             CGRectGetMinY(view.bounds),
-                             CGRectGetWidth(frame),
-                             CGRectGetHeight(frame));
+    [projectable prj_apply:rect];
   }
 }
 

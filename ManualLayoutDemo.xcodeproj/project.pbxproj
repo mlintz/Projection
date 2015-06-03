@@ -18,6 +18,7 @@
 		5A8CADC81A7EE46600E16AFA /* libProjection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8CADAC1A7EE2ED00E16AFA /* libProjection.a */; };
 		5A8CADCB1A7EE4C300E16AFA /* PRJMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8CADCA1A7EE4C300E16AFA /* PRJMapping.m */; };
 		5A8CADD41A7EF27900E16AFA /* UIView+PRJConvenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8CADD31A7EF27900E16AFA /* UIView+PRJConvenience.m */; };
+		C84071701B1E89A800D8EE61 /* PRJCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = C840716F1B1E89A800D8EE61 /* PRJCategories.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,8 @@
 		5A8CADD21A7EF27900E16AFA /* UIView+PRJConvenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PRJConvenience.h"; sourceTree = "<group>"; };
 		5A8CADD31A7EF27900E16AFA /* UIView+PRJConvenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PRJConvenience.m"; sourceTree = "<group>"; };
 		5A8CADD51A7EF59700E16AFA /* PRJProjection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PRJProjection.h; sourceTree = "<group>"; };
+		C840716E1B1E89A800D8EE61 /* PRJCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRJCategories.h; sourceTree = "<group>"; };
+		C840716F1B1E89A800D8EE61 /* PRJCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRJCategories.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +156,8 @@
 				5A8CADCA1A7EE4C300E16AFA /* PRJMapping.m */,
 				5A8CADD21A7EF27900E16AFA /* UIView+PRJConvenience.h */,
 				5A8CADD31A7EF27900E16AFA /* UIView+PRJConvenience.m */,
+				C840716E1B1E89A800D8EE61 /* PRJCategories.h */,
+				C840716F1B1E89A800D8EE61 /* PRJCategories.m */,
 			);
 			path = Projection;
 			sourceTree = "<group>";
@@ -304,6 +309,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C84071701B1E89A800D8EE61 /* PRJCategories.m in Sources */,
 				5A8CADC51A7EE2F900E16AFA /* PRJRect.m in Sources */,
 				5A8CADD41A7EF27900E16AFA /* UIView+PRJConvenience.m in Sources */,
 				5A8CADCB1A7EE4C300E16AFA /* PRJMapping.m in Sources */,
@@ -534,6 +540,7 @@
 				5A8CADBF1A7EE2ED00E16AFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5A8CADC01A7EE2ED00E16AFA /* Build configuration list for PBXNativeTarget "ProjectionTests" */ = {
 			isa = XCConfigurationList;
@@ -542,6 +549,7 @@
 				5A8CADC21A7EE2ED00E16AFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

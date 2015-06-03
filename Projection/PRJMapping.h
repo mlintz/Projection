@@ -17,18 +17,18 @@
 
 @class PRJRect;
 
-/** A mapping class for associating UIViews with PRJRects.
+/** A mapping class for associating projectables (views and layers) with PRJRects.
 
 PRJMapping behaves like an NSMutableDictionary with the following exceptions:
 
-- PRJMapping retains UIView keys instead of copying them.
+- PRJMapping retains keys instead of copying them.
 - PRJMapping copies PRJValues instead of retaining them.
 - objectForKeyedSubscript will create and store a new PRJRect instead of returning nil if there
-  isn't a value associated with a UIView. This means that clients will rarely have to create
+  isn't a value associated with a projectable. This means that clients will rarely have to create
   PRJRects on their own.
 
-Invoking "apply" iterates through all view/rect entries and sets the rect's integralFrame as the
-view's frame.
+Invoking "apply" iterates through all entries and sets the rect's integralFrame as the
+projectable's frame.
 
 Usage:
     PRJMapping *mapping = [[PRJMapping alloc] init];
@@ -39,29 +39,37 @@ Usage:
 
 */
 
+@protocol PRJProjectable <NSObject>
+NS_ASSUME_NONNULL_BEGIN
+
+- (void)prj_apply:(PRJRect *)rect;
+
+NS_ASSUME_NONNULL_END
+@end
+
 @interface PRJMapping : NSObject
 NS_ASSUME_NONNULL_BEGIN
 
-/** Returns the PRJRect associated with the given UIView.
-@param key The UIView for which to return the associatedPRJRect.
+/** Returns the PRJRect associated with the given Projectable.
+@param key The id<PRJProjectable> for which to return the associatedPRJRect.
 @return The PRJRect associated with with key. If no value exists, the receiver creates, stores, and
 returns a new PRJRect.
 */
-- (PRJRect *)objectForKeyedSubscript:(UIView *)key;
+- (PRJRect *)objectForKeyedSubscript:(id<PRJProjectable>)key;
 
-/** Adds a given PRJRect, UIView pair to the receiver.
+/** Adds a given PRJRect, id<PRJProjectable> pair to the receiver.
 
 This method will rarely need to be invoked since objectForKeyedSubscript will automatically create
 a new PRJRect if necessary.
 
 @param obj The PRJRect for key. Instead of retaining obj, a copy of obj is created and stored
 instead.
-@param key The UIView key for obj. The UIView is retained.
+@param key The id<PRJProjectable> key for obj. The key is retained.
 
 */
-- (void)setObject:(PRJRect *)obj forKeyedSubscript:(UIView *)key;
+- (void)setObject:(PRJRect *)obj forKeyedSubscript:(id<PRJProjectable>)key;
 
-/// Iterates through all view/rect entries and sets the rect's integralFrame as the view's frame.
+/// Iterates through all entries and applies the rect to the id<PRJProjectable>.
 - (void)apply;
 
 NS_ASSUME_NONNULL_END
