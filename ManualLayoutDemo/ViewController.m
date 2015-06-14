@@ -35,6 +35,7 @@
   self.view = view;
   
   self.cyanView = [[UIView alloc] init];
+  self.cyanView.layer.position = CGPointZero;
   self.cyanView.backgroundColor = [UIColor cyanColor];
   [self.view addSubview:self.cyanView];
   

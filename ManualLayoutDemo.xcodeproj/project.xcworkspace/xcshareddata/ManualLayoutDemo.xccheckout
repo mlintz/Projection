@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3816E24A-EBB1-4661-AD80-596CC3061957</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ManualLayoutDemo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C8EC5481EF9E73CEFE602B88813EE695C7F5F4BB</key>
+		<string>https://github.com/mlintz/Projection.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ManualLayoutDemo.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C8EC5481EF9E73CEFE602B88813EE695C7F5F4BB</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/mlintz/Projection.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C8EC5481EF9E73CEFE602B88813EE695C7F5F4BB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C8EC5481EF9E73CEFE602B88813EE695C7F5F4BB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Projection</string>
+		</dict>
+	</array>
+</dict>
+</plist>

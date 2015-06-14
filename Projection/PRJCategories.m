@@ -18,7 +18,9 @@
                            CGRectGetMinY(self.bounds),
                            CGRectGetWidth(frame),
                            CGRectGetHeight(frame));
-  self.center = CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame));
+  CGFloat centerX = CGRectGetMinX(frame) + CGRectGetWidth(frame) * self.layer.anchorPoint.x;
+  CGFloat centerY = CGRectGetMinY(frame) + CGRectGetHeight(frame) * self.layer.anchorPoint.y;
+  self.center = CGPointMake(centerX, centerY);
 }
 
 @end

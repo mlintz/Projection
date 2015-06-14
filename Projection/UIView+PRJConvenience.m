@@ -13,16 +13,18 @@
 
 @implementation UIView (PRJConvenience)
 
-- (void)prj_applyProjection:(PRJConfigurationBlock)configurationBlock {
+- (void)prj_applyProjection:(__attribute__((noescape)) PRJConfigurationBlock)configurationBlock {
   [self prj_applyProjectionWithBounds:self.bounds configuration:configurationBlock];
 }
 
-- (void)prj_applyProjectionWithSize:(CGSize)size configuration:(PRJConfigurationBlock)configurationBlock {
+- (void)prj_applyProjectionWithSize:(CGSize)size
+                      configuration:(__attribute__((noescape)) PRJConfigurationBlock)configurationBlock {
   CGRect bounds = CGRectMake(CGRectGetMinX(self.bounds), CGRectGetMinY(self.bounds), size.width, size.height);
   [self prj_applyProjectionWithBounds:bounds configuration:configurationBlock];
 }
 
-- (void)prj_applyProjectionWithBounds:(CGRect)bounds configuration:(PRJConfigurationBlock)configurationBlock {
+- (void)prj_applyProjectionWithBounds:(CGRect)bounds
+                        configuration:(__attribute__((noescape)) PRJConfigurationBlock)configurationBlock {
   NSAssert(configurationBlock, @"configurationBlock must be non-nil");
   PRJMapping *mapping = [[PRJMapping alloc] init];
   PRJRect *viewBoundsRect = [[PRJRect alloc] init];
