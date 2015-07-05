@@ -13,7 +13,7 @@
 @implementation UIView (PRJProjectable)
 
 - (void)prj_apply:(PRJRect *)rect {
-  CGRect frame = rect.integralFrame;
+  CGRect frame = rect.roundedFrame;
   self.bounds = CGRectMake(CGRectGetMinX(self.bounds),
                            CGRectGetMinY(self.bounds),
                            CGRectGetWidth(frame),
@@ -28,7 +28,7 @@
 @implementation CALayer (PRJProjectable)
 
 - (void)prj_apply:(PRJRect *)rect {
-  CGRect frame = rect.integralFrame;
+  CGRect frame = rect.roundedFrame;
   self.bounds = CGRectMake(CGRectGetMinX(self.bounds),
                            CGRectGetMinY(self.bounds),
                            CGRectGetWidth(frame),
@@ -37,6 +37,32 @@
   CGFloat positionX = CGRectGetMinX(frame) + CGRectGetWidth(frame) * self.anchorPoint.x;
   CGFloat positionY = CGRectGetMinY(frame) + CGRectGetHeight(frame) * self.anchorPoint.y;
   self.position = CGPointMake(positionX, positionY);
+}
+
+@end
+
+@implementation UIViewController (PRJProjectable)
+
+- (void)prj_apply:(PRJRect *)rect {
+  [self.view prj_apply:rect];
+}
+
+@end
+
+@implementation UIView (PRJSizing)
+
+- (PRJRect *)fittingRectWithSize:(CGSize)size {
+  PRJRect *rect = [[PRJRect alloc] init];
+  rect.size = [self sizeThatFits:size];
+  return rect;
+}
+
+- (PRJRect *)fittingRectWithWidth:(CGFloat)width {
+  return [self fittingRectWithSize:CGSizeMake(width, 0)];
+}
+
+- (PRJRect *)fittingRect {
+  return [self fittingRectWithSize:CGSizeZero];
 }
 
 @end

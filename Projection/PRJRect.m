@@ -12,6 +12,17 @@ static NSString * const kOverdefinedAssertString = @"Attempting to set value on 
 static NSString * const kUnderdefinedAssertString = @"Attempting to read value on underdefined rectangle: %@";
 static NSString * const kInvalidMetricsString = @"Rectangle has invalid metrics: %@";
 
+static CGFloat const kMinFloatNotSet = -1;
+static CGFloat gMinFloat = kMinFloatNotSet;
+
+static CGFloat PRJCeil(CGFloat value) {
+  return [PRJRect minFloat] * ceil(value / [PRJRect minFloat]);
+}
+
+static CGFloat PRJRound(CGFloat value) {
+  return [PRJRect minFloat] * round(value / [PRJRect minFloat]);
+}
+
 typedef NS_ENUM(NSInteger, PRJMetricDirection) {
   kPRJMetricDirectionVertical,
   kPRJMetricDirectionHorizontal,
@@ -149,9 +160,29 @@ typedef NS_OPTIONS(NSUInteger, PRJMetricType) {
   [self setTop:topLeft.y];
 }
 
+- (void)setTopCenter:(CGPoint)topCenter {
+  [self setCenterX:topCenter.x];
+  [self setTop:topCenter.y];
+}
+
 - (void)setTopRight:(CGPoint)topRight {
   [self setRight:topRight.x];
   [self setTop:topRight.y];
+}
+
+- (void)setCenterRight:(CGPoint)centerRight {
+  [self setRight:centerRight.x];
+  [self setCenterY:centerRight.y];
+}
+
+- (void)setBottomRight:(CGPoint)bottomRight {
+  [self setRight:bottomRight.x];
+  [self setBottom:bottomRight.y];
+}
+
+- (void)setBottomCenter:(CGPoint)bottomCenter {
+  [self setCenterX:bottomCenter.x];
+  [self setBottom:bottomCenter.y];
 }
 
 - (void)setBottomLeft:(CGPoint)bottomLeft {
@@ -159,9 +190,9 @@ typedef NS_OPTIONS(NSUInteger, PRJMetricType) {
   [self setBottom:bottomLeft.y];
 }
 
-- (void)setBottomRight:(CGPoint)bottomRight {
-  [self setRight:bottomRight.x];
-  [self setBottom:bottomRight.y];
+- (void)setCenterLeft:(CGPoint)centerLeft {
+  [self setLeft:centerLeft.x];
+  [self setCenterY:centerLeft.y];
 }
 
 - (void)setCenter:(CGPoint)center {
@@ -271,16 +302,32 @@ typedef NS_OPTIONS(NSUInteger, PRJMetricType) {
   return CGPointMake(self.left, self.top);
 }
 
+- (CGPoint)topCenter {
+  return CGPointMake(self.centerX, self.top);
+}
+
 - (CGPoint)topRight {
   return CGPointMake(self.right, self.top);
+}
+
+- (CGPoint)centerRight {
+  return CGPointMake(self.right, self.centerY);
+}
+
+- (CGPoint)bottomRight {
+  return CGPointMake(self.right, self.bottom);
+}
+
+- (CGPoint)bottomCenter {
+  return CGPointMake(self.centerX, self.bottom);
 }
 
 - (CGPoint)bottomLeft {
   return CGPointMake(self.left, self.bottom);
 }
 
-- (CGPoint)bottomRight {
-  return CGPointMake(self.right, self.bottom);
+- (CGPoint)centerLeft {
+  return CGPointMake(self.left, self.centerY);
 }
 
 - (CGPoint)center {
@@ -297,8 +344,12 @@ typedef NS_OPTIONS(NSUInteger, PRJMetricType) {
   return CGRectMake(origin.x, origin.y, size.width, size.height);
 }
 
-- (CGRect)integralFrame {
-    return CGRectIntegral(self.frame);
+- (CGRect)roundedFrame {
+  CGFloat x = PRJRound(self.left);
+  CGFloat y = PRJRound(self.top);
+  CGFloat width = PRJRound(self.right) - x;
+  CGFloat height = PRJRound(self.bottom) - y;
+  return CGRectMake(x, y, width, height);
 }
 
 - (BOOL)isFullyDefined {
@@ -306,6 +357,17 @@ typedef NS_OPTIONS(NSUInteger, PRJMetricType) {
       && _horizontalMetric1.metricType != kPRJMetricTypeNull
       && _verticalMetric0.metricType != kPRJMetricTypeNull
       && _verticalMetric1.metricType != kPRJMetricTypeNull;
+}
+
++ (CGFloat)minFloat {
+  if (gMinFloat == kMinFloatNotSet) {
+    gMinFloat = 1 / [UIScreen mainScreen].scale;
+  }
+  return gMinFloat;
+}
+
++ (void)debugSetMinFloat:(CGFloat)minFloat {
+  gMinFloat = minFloat;
 }
 
 #pragma mark NSCopying
@@ -405,6 +467,9 @@ typedef NS_OPTIONS(NSUInteger, PRJMetricType) {
 }
 
 - (void)setHorizontalValue:(CGFloat)value forMetricType:(PRJMetricType)type {
+  if (type == kPRJMetricTypeLength) {
+    value = PRJCeil(value);
+  }
   if (_horizontalMetric0.metricType == type || _horizontalMetric0.metricType == kPRJMetricTypeNull) {
     _horizontalMetric0 = [PRJMetric metricWithType:type value:value];
   } else if (_horizontalMetric1.metricType == type || _horizontalMetric1.metricType == kPRJMetricTypeNull) {
@@ -415,6 +480,9 @@ typedef NS_OPTIONS(NSUInteger, PRJMetricType) {
 }
 
 - (void)setVerticalValue:(CGFloat)value forMetricType:(PRJMetricType)type {
+  if (type == kPRJMetricTypeLength) {
+    value = PRJCeil(value);
+  }
   if (_verticalMetric0.metricType == type || _verticalMetric0.metricType == kPRJMetricTypeNull) {
     _verticalMetric0 = [PRJMetric metricWithType:type value:value];
   } else if (_verticalMetric1.metricType == type || _verticalMetric1.metricType == kPRJMetricTypeNull) {

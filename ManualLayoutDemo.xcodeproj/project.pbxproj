@@ -19,6 +19,7 @@
 		5A8CADCB1A7EE4C300E16AFA /* PRJMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8CADCA1A7EE4C300E16AFA /* PRJMapping.m */; };
 		5A8CADD41A7EF27900E16AFA /* UIView+PRJConvenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8CADD31A7EF27900E16AFA /* UIView+PRJConvenience.m */; };
 		C84071701B1E89A800D8EE61 /* PRJCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = C840716F1B1E89A800D8EE61 /* PRJCategories.m */; };
+		C895F9A51B48BCC100517DCC /* PRJRectTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C895F9A41B48BCC100517DCC /* PRJRectTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		5A8CADD51A7EF59700E16AFA /* PRJProjection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PRJProjection.h; sourceTree = "<group>"; };
 		C840716E1B1E89A800D8EE61 /* PRJCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRJCategories.h; sourceTree = "<group>"; };
 		C840716F1B1E89A800D8EE61 /* PRJCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRJCategories.m; sourceTree = "<group>"; };
+		C895F9A41B48BCC100517DCC /* PRJRectTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRJRectTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				5A8CADBB1A7EE2ED00E16AFA /* Supporting Files */,
+				C895F9A41B48BCC100517DCC /* PRJRectTest.m */,
 			);
 			path = ProjectionTests;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C895F9A51B48BCC100517DCC /* PRJRectTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,6 +499,12 @@
 				);
 				INFOPLIST_FILE = ProjectionTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -508,6 +518,12 @@
 				);
 				INFOPLIST_FILE = ProjectionTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

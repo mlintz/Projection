@@ -70,18 +70,25 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, assign) CGFloat height;
 
 @property(nonatomic, assign) CGPoint topLeft;
+@property(nonatomic, assign) CGPoint topCenter;
 @property(nonatomic, assign) CGPoint topRight;
-@property(nonatomic, assign) CGPoint bottomLeft;
+@property(nonatomic, assign) CGPoint centerRight;
 @property(nonatomic, assign) CGPoint bottomRight;
+@property(nonatomic, assign) CGPoint bottomCenter;
+@property(nonatomic, assign) CGPoint bottomLeft;
+@property(nonatomic, assign) CGPoint centerLeft;
 @property(nonatomic, assign) CGPoint center;
 
 @property(nonatomic, assign) CGSize size;
 @property(nonatomic, assign) CGRect frame;
-/// Equivalent to applying CGRectIntegral to the receiver's frame.
-@property(nonatomic, readonly) CGRect integralFrame;
+/// The frame aligned to |minScale| boundaries
+@property(nonatomic, readonly) CGRect roundedFrame;
 
 /// YES if exactly two horizontal and two vertical values are set.
 @property(nonatomic, readonly) BOOL isFullyDefined;
+
++ (CGFloat)minFloat;
++ (void)debugSetMinFloat:(CGFloat)minFloat;
 
 NS_ASSUME_NONNULL_END
 @end

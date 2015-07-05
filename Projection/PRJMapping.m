@@ -29,6 +29,7 @@
 
 - (void)setObject:(PRJRect *)rect forKeyedSubscript:(id<PRJProjectable>)key {
   NSAssert(key && rect, @"key and rect must be non-nil.");
+  NSAssert(![_rectMapping objectForKey:key], @"rect previously set for key: %@", key);
   [_rectMapping setObject:[rect copy] forKey:key];
 }
 

@@ -16,3 +16,17 @@
 
 @interface CALayer (PRJProjectable)<PRJProjectable>
 @end
+
+@interface UIViewController (PRJProjectable)<PRJProjectable>
+@end
+
+@interface UIView (PRJSizing)
+NS_ASSUME_NONNULL_BEGIN
+/// Returns a rect with size equal to [self sizeThatFits:size];
+- (PRJRect *)fittingRectWithSize:(CGSize)size;
+/// Equivalent to [self fittingRectWithSize:CGSizeMake(width, 0)];
+- (PRJRect *)fittingRectWithWidth:(CGFloat)width;
+/// Equivalent to [self fittingRectWithSize:CGSizeZero];
+- (PRJRect *)fittingRect;
+NS_ASSUME_NONNULL_END
+@end
