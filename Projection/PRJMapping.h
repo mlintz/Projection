@@ -9,12 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-//   - document when rounding happens (never! mapping does rounding)
-//   - document quirks in PRJMapping subscription (retains (not copy) key,
-//            creates new key if one doesn't exist on a get)
-//            copies on assign
-//   - Apply does center and bounds
-
 @class PRJRect;
 
 /** A mapping class for associating projectables (views and layers) with PRJRects.
