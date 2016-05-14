@@ -90,5 +90,28 @@ NS_ASSUME_NONNULL_BEGIN
 + (CGFloat)minFloat;
 + (void)debugSetMinFloat:(CGFloat)minFloat;
 
+- (instancetype)left:(CGFloat)left;
+- (instancetype)right:(CGFloat)right;
+- (instancetype)centerX:(CGFloat)centerX;
+- (instancetype)width:(CGFloat)width;
+
+- (instancetype)top:(CGFloat)top;
+- (instancetype)bottom:(CGFloat)bottom;
+- (instancetype)centerY:(CGFloat)centerY;
+- (instancetype)height:(CGFloat)height;
+
+- (instancetype)topLeft:(CGPoint)topLeft;
+- (instancetype)topCenter:(CGPoint)topCenter;
+- (instancetype)topRight:(CGPoint)topRight;
+- (instancetype)centerRight:(CGPoint)centerRight;
+- (instancetype)bottomRight:(CGPoint)bottomRight;
+- (instancetype)bottomCenter:(CGPoint)bottomCenter;
+- (instancetype)bottomLeft:(CGPoint)bottomLeft;
+- (instancetype)centerLeft:(CGPoint)centerLeft;
+- (instancetype)center:(CGPoint)center;
+
+- (instancetype)size:(CGSize)size;
+- (instancetype)frame:(CGRect)frame;
+
 NS_ASSUME_NONNULL_END
 @end

@@ -8,6 +8,13 @@
 
 #import "PRJRect.h"
 
+#define SETTER_RETURNING_SELF(METRIC, TYPE) \
+- (instancetype)METRIC:(TYPE)METRIC { \
+  self.METRIC = METRIC; \
+  return self; \
+}
+
+
 static NSString * const kOverdefinedAssertString = @"Attempting to set value on fully defined rectangle: %@";
 static NSString * const kUnderdefinedAssertString = @"Attempting to read value on underdefined rectangle: %@";
 static NSString * const kInvalidMetricsString = @"Rectangle has invalid metrics: %@";
@@ -500,5 +507,28 @@ typedef NS_OPTIONS(NSUInteger, PRJMetricType) {
   });
   return nullMetric;
 }
+
+SETTER_RETURNING_SELF(left, CGFloat)
+SETTER_RETURNING_SELF(right, CGFloat)
+SETTER_RETURNING_SELF(centerX, CGFloat)
+SETTER_RETURNING_SELF(width, CGFloat)
+
+SETTER_RETURNING_SELF(top, CGFloat)
+SETTER_RETURNING_SELF(bottom, CGFloat)
+SETTER_RETURNING_SELF(centerY, CGFloat)
+SETTER_RETURNING_SELF(height, CGFloat)
+
+SETTER_RETURNING_SELF(topLeft, CGPoint)
+SETTER_RETURNING_SELF(topCenter, CGPoint)
+SETTER_RETURNING_SELF(topRight, CGPoint)
+SETTER_RETURNING_SELF(centerRight, CGPoint)
+SETTER_RETURNING_SELF(bottomRight, CGPoint)
+SETTER_RETURNING_SELF(bottomCenter, CGPoint)
+SETTER_RETURNING_SELF(bottomLeft, CGPoint)
+SETTER_RETURNING_SELF(centerLeft, CGPoint)
+SETTER_RETURNING_SELF(center, CGPoint)
+
+SETTER_RETURNING_SELF(size, CGSize)
+SETTER_RETURNING_SELF(frame, CGRect)
 
 @end
