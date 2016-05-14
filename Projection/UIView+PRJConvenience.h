@@ -50,11 +50,11 @@ The following two examples are equivalent:
 @interface UIView (PRJConvenience)
 NS_ASSUME_NONNULL_BEGIN
 
-- (void)prj_applyProjection:(PRJConfigurationBlock)configurationBlock;
+- (void)prj_applyProjection:(__attribute__((noescape)) PRJConfigurationBlock)configurationBlock;
 - (void)prj_applyProjectionWithSize:(CGSize)size
-                      configuration:(PRJConfigurationBlock)configurationBlock;
+                      configuration:(__attribute__((noescape)) PRJConfigurationBlock)configurationBlock;
 - (void)prj_applyProjectionWithBounds:(CGRect)bounds
-                        configuration:(PRJConfigurationBlock)configurationBlock;
+                        configuration:(__attribute__((noescape)) PRJConfigurationBlock)configurationBlock;
 
 NS_ASSUME_NONNULL_END
 @end
