@@ -531,4 +531,10 @@ SETTER_RETURNING_SELF(center, CGPoint)
 SETTER_RETURNING_SELF(size, CGSize)
 SETTER_RETURNING_SELF(frame, CGRect)
 
+- (instancetype)expandSizeWithWidth:(CGFloat)dx height:(CGFloat)dy {
+  self.width += dx;
+  self.height += dy;
+  return self;
+}
+
 @end

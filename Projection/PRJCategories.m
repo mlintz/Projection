@@ -66,3 +66,23 @@
 }
 
 @end
+
+@implementation PRJRect (PRJSizing)
+
+- (instancetype)sizeToView:(UIView *)view size:(CGSize)size {
+  PRJRect *rect = [view fittingRectWithSize:size];
+  self.size = rect.size;
+  return self;
+}
+
+- (instancetype)sizeToView:(UIView *)view width:(CGFloat)width {
+  [self sizeToView:view size:CGSizeMake(width, 0)];
+  return self;
+}
+
+- (instancetype)sizeToView:(UIView *)view {
+  [self sizeToView:view size:CGSizeZero];
+  return self;
+}
+
+@end

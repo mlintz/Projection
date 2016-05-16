@@ -113,5 +113,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)size:(CGSize)size;
 - (instancetype)frame:(CGRect)frame;
 
+/// Modifies the receiver's size by increasing the width by `dx` and the height by `dy`
+- (instancetype)expandSizeWithWidth:(CGFloat)dx height:(CGFloat)dy;
+
 NS_ASSUME_NONNULL_END
 @end

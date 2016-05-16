@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 
 #import "PRJMapping.h"
+#import "PRJRect.h"
 
 @interface UIView (PRJProjectable)<PRJProjectable>
 @end
@@ -28,5 +29,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (PRJRect *)fittingRectWithWidth:(CGFloat)width;
 /// Equivalent to [self fittingRectWithSize:CGSizeZero];
 - (PRJRect *)fittingRect;
+NS_ASSUME_NONNULL_END
+@end
+
+@interface PRJRect (PRJSizing)
+NS_ASSUME_NONNULL_BEGIN
+/// Sets the receiver's size to the value equal to [view sizeThatFits:size];
+- (instancetype)sizeToView:(UIView *)view size:(CGSize)size;
+/// Sets the receiver's size to the value equal to [view sizeThatFits:CGSizeMake(width, 0)];
+- (instancetype)sizeToView:(UIView *)view width:(CGFloat)width;
+/// Sets the receiver's size to the value equal to [view sizeThatFits:CGSizeZero];
+- (instancetype)sizeToView:(UIView *)view;
 NS_ASSUME_NONNULL_END
 @end
