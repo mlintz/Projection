@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name             = "Projection"
-  s.version          = "0.0.5"
+  s.version          = "0.0.6"
 
   s.author           = { "Mikey Lintz" => "mlintz@gmail.com" }
   s.social_media_url = "http://twitter.com/mikeylintz"
