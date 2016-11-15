@@ -12,6 +12,14 @@
 
 @implementation UIView (PRJProjectable)
 
+-(PRJRect *)prj_frame {
+	return [[PRJRect alloc] initWithFrame:self.frame];
+}
+
+-(void)setPrj_frame:(PRJRect *)prj_frame {
+	[self prj_apply:prj_frame];
+}
+
 - (void)prj_apply:(PRJRect *)rect {
   CGRect frame = rect.roundedFrame;
   self.bounds = CGRectMake(CGRectGetMinX(self.bounds),
@@ -26,6 +34,14 @@
 @end
 
 @implementation CALayer (PRJProjectable)
+
+-(PRJRect *)prj_frame {
+	return [[PRJRect alloc] initWithFrame:self.frame];
+}
+
+-(void)setPrj_frame:(PRJRect *)prj_frame {
+	[self prj_apply:prj_frame];
+}
 
 - (void)prj_apply:(PRJRect *)rect {
   CGRect frame = rect.roundedFrame;
@@ -42,6 +58,16 @@
 @end
 
 @implementation UIViewController (PRJProjectable)
+
+//These frame methods are a little weird, but this whole category is a little weird
+
+-(PRJRect *)prj_frame {
+	return [[PRJRect alloc] initWithFrame:self.view.frame];
+}
+
+-(void)setPrj_frame:(PRJRect *)prj_frame {
+	[self prj_apply:prj_frame];
+}
 
 - (void)prj_apply:(PRJRect *)rect {
   [self.view prj_apply:rect];

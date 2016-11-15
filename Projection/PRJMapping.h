@@ -36,6 +36,8 @@ Usage:
 @protocol PRJProjectable <NSObject>
 NS_ASSUME_NONNULL_BEGIN
 
+@property (nonatomic, strong) PRJRect* prj_frame;
+
 - (void)prj_apply:(PRJRect *)rect;
 
 NS_ASSUME_NONNULL_END
