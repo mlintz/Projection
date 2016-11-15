@@ -37,7 +37,6 @@ Usage:
 NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) PRJRect* prj_frame;
-@property (nonatomic, strong) PRJRect* prj_bounds;
 
 - (void)prj_apply:(PRJRect *)rect;
 
