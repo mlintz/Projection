@@ -90,6 +90,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (CGFloat)minFloat;
 + (void)debugSetMinFloat:(CGFloat)minFloat;
 
+- (instancetype)initWithFrame:(CGRect)rect;
+
 - (instancetype)left:(CGFloat)left;
 - (instancetype)right:(CGFloat)right;
 - (instancetype)centerX:(CGFloat)centerX;

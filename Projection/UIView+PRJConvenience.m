@@ -10,11 +10,20 @@
 
 #import "PRJMapping.h"
 #import "PRJRect.h"
+#import "PRJCategories.h"
 
 @implementation UIView (PRJConvenience)
 
 - (void)prj_applyProjection:(PRJConfigurationBlock)configurationBlock {
   [self prj_applyProjectionWithBounds:self.bounds configuration:configurationBlock];
+}
+
+- (void)prj_applySingleProjection:(PRJSingleConfigurationBlock)configurationBlock {
+	[self prj_applyProjectionWithBounds:self.bounds configuration:^(PRJMapping * _Nonnull mapping, PRJRect * _Nonnull viewBounds) {
+		PRJRect* rect = [[PRJRect alloc] init];
+		configurationBlock(rect);
+		mapping[self] = rect;
+	}];
 }
 
 - (void)prj_applyProjectionWithSize:(CGSize)size

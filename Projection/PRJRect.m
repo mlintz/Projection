@@ -101,6 +101,15 @@ typedef NS_OPTIONS(NSUInteger, PRJMetricType) {
   return self;
 }
 
+- (instancetype)initWithFrame:(CGRect)rect {
+	self = [self init];
+	if (self) {
+		self.topLeft = rect.origin;
+		self.size = rect.size;
+	}
+	return self;
+}
+
 - (NSString *)description {
   NSString *metricFormat = @"%@ = %.2f";
   NSMutableArray *metricDescriptions = [NSMutableArray arrayWithCapacity:4];

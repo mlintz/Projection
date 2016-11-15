@@ -13,6 +13,7 @@
 @class PRJRect;
 
 typedef void (^PRJConfigurationBlock)(PRJMapping * __nonnull mapping, PRJRect * __nonnull viewBounds);
+typedef void (^PRJSingleConfigurationBlock)(PRJRect * __nonnull frame);
 
 /** Convenience category for applying layout to a view's children.
 
@@ -51,6 +52,7 @@ The following two examples are equivalent:
 NS_ASSUME_NONNULL_BEGIN
 
 - (void)prj_applyProjection:(__attribute__((noescape)) PRJConfigurationBlock)configurationBlock;
+- (void)prj_applySingleProjection:(PRJSingleConfigurationBlock)configurationBlock;
 - (void)prj_applyProjectionWithSize:(CGSize)size
                       configuration:(__attribute__((noescape)) PRJConfigurationBlock)configurationBlock;
 - (void)prj_applyProjectionWithBounds:(CGRect)bounds
